@@ -12,5 +12,8 @@
 - https://app.notion.com/p/Mission-3f3e9dee34858067b881d9ae1018108e?source=copy_link
 ### Skills-and-Competencies
 - https://app.notion.com/p/Skills-and-Competencies-3f3e9dee348580f3917be100780da93c?source=copy_link
+### Market Research
+- https://app.notion.com/p/Market-Research-3f8e9dee348580d79dfeed5604e0b80f?v=3f3e9dee3485807a935b000cc0b3736e&source=copy_link
+- 
 
 
