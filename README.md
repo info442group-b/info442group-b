@@ -16,3 +16,5 @@
 - https://app.notion.com/p/Market-Research-3f8e9dee348580d79dfeed5604e0b80f?v=3f3e9dee3485807a935b000cc0b3736e&source=copy_link
 ### Specifications
 - https://app.notion.com/p/Specifications-3fae9dee348580a9a2d2c10733a6f0f8?source=copy_link
+### Requirements
+- https://app.notion.com/p/Requirements-401e9dee348580758284c8063589a853?v=3f3e9dee3485807a935b000cc0b3736e&source=copy_link
