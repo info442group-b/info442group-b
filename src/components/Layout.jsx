@@ -12,12 +12,12 @@ export default function Layout() {
     <>
       <nav aria-label="Main">
         {links.map(({ to, label}) => (
-          <navLink key={to} to={to} end={to=== "/"}>
+          <NavLink key={to} to={to} end={to=== "/"}>
             {label}
-          </navLink>
+          </NavLink>
         ))}
       </nav>
-      <main><Outlet /></main>main>
+      <main><Outlet /></main>
     </>
   );
 }
