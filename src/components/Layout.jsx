@@ -1,23 +1,17 @@
-import { NavLink, Outlet} from "react-router-dom";
-
-const links = [
-  {to: "/", label:"Home"},
-  {to: "/insights", label:"Insights"},
-  {to: "/settings", label:"Settings"},
-  {to: "/support", label:"Support"},
- ];
+import { NavLink, Outlet } from "react-router-dom";
 
 export default function Layout() {
-  return(
+  return (
     <>
-      <nav aria-label="Main">
-        {links.map(({ to, label}) => (
-          <NavLink key={to} to={to} end={to=== "/"}>
-            {label}
-          </NavLink>
-        ))}
+      <nav aria-label="Main navigation">
+        <NavLink to="/home">Home</NavLink>{" "}
+        <NavLink to="/check-in">Check-in</NavLink>{" "}
+        <NavLink to="/insights">Insights</NavLink>{" "}
+        <NavLink to="/settings">Settings</NavLink>{" "}
+        <NavLink to="/support">Support</NavLink>
       </nav>
-      <main><Outlet /></main>
+
+      <Outlet />
     </>
   );
 }
