@@ -3,14 +3,14 @@ import { onAuthStateChanged, signOut } from "firebase/auth";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import { auth } from "./firebase.js";
-import Login from "./Login.jsx";
-import Welcome from "./Welcome.jsx";
-import CheckIn from "./CheckIn.jsx";
+import Login from "./pages/Login.jsx";
+import Welcome from "./pages/Welcome.jsx";
+import CheckIn from "./pages/CheckIn.jsx";
 import Layout from "./components/Layout.jsx";
-import Home from "./Home.jsx";
-import Insights from "./Insights.jsx";
-import Settings from "./Settings.jsx";
-import Support from "./Support.jsx";
+import Home from "./pages/Home.jsx";
+import Insights from "./pages/Insights.jsx";
+import Settings from "./pages/Settings.jsx";
+import Support from "./pages/Support.jsx";
 
 function AppContent() {
   const [user, setUser] = useState(null);
