@@ -1,1 +1,11 @@
-
+.activity {} /*outer wrapper*/
+.activity-card {} /*box around activity*/
+.activity-title {} /*activity name*/
+.activity-duration {} /*time*/
+.activity-steps {} /*instructions <ol>*/
+.activity-timer {} /*big countdown and "all done"*/
+.activity-buttons {} /*row holding buttons*/
+.btn {} /*shared button base*/
+.btn-primary {} /*start, pause, resume*/
+.btn-secondary {} /*show another suggestion*/
+.activity-support {} /*"Open supporrt resources" in link style*/
