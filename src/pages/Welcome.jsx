@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { doc, serverTimestamp, setDoc } from "firebase/firestore";
 
-import { db } from "./firebase.js";
+import { db } from "../firebase.js";
 
 export default function Welcome({ user }) {
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
