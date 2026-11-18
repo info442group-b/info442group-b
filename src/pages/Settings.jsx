@@ -6,7 +6,7 @@ import {
   setDoc,
 } from "firebase/firestore";
 
-import { db } from "./firebase.js";
+import { db } from "../firebase.js";
 
 export default function Settings({ user }) {
   const [reminderEnabled, setReminderEnabled] = useState(false);
