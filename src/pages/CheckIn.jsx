@@ -6,7 +6,7 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-import { db } from "./firebase.js";
+import { db } from "../firebase.js";
 
 export default function CheckIn({ user }) {
   const [mood, setMood] = useState("");
