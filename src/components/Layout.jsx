@@ -3,7 +3,7 @@ import { NavLink, Outlet } from "react-router-dom";
 export default function Layout() {
   return (
     <>
-      <nav aria-label="Main navigation">
+      <nav className="main-navigation" aria-label="Main navigation">
         <NavLink to="/home">Home</NavLink>{" "}
         <NavLink to="/check-in">Check-in</NavLink>{" "}
         <NavLink to="/insights">Insights</NavLink>{" "}
@@ -11,7 +11,9 @@ export default function Layout() {
         <NavLink to="/support">Support</NavLink>
       </nav>
 
+    <main className="page-content">
       <Outlet />
+    </main>
     </>
   );
 }

@@ -82,3 +82,146 @@
   }
 }
 
+/* Keyboard focus visibility */
+:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 3px;
+}
+
+/* Consistent sizing */
+* {
+  box-sizing: border-box;
+}
+
+/* Prevent images from overflowing */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/*Login Page*/
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  background-color: #f8fafc;
+}
+
+.login-card {
+  width: 100%;
+  max-width: 440px;
+  padding: 40px;
+  background-color: #ffffff;
+  border: 1px solid #d1d5db;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.login-card h1 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 28px;
+  color: #222222;
+}
+
+.login-card p {
+  color: #404040;
+  line-height: 1.6;
+}
+
+.login-button {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.login-error {
+  margin-top: 20px;
+  padding: 12px;
+  border-radius: 6px;
+  background-color: #fef2f2;
+  color: #991b1b !important;
+  border: 1px solid #fecaca;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .login-page {
+    padding: 16px;
+  }
+
+  .login-card {
+    padding: 24px;
+  }
+
+  .login-card h1 {
+    font-size: 24px;
+  }
+}
+
+/*Navigation*/
+.main-navigation {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 24px;
+  background-color: #ffffff;
+  border-bottom: 1px solid #d1d5db;
+}
+
+.main-navigation a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 16px;
+  color: #333333;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.main-navigation a:hover {
+  background-color: #f1f5f9;
+}
+
+.main-navigation a.active {
+  background-color: #dbeafe;
+  color: #1e40af;
+  font-weight: 600;
+}
+
+.page-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+/* Mobile navigation */
+@media (max-width: 600px) {
+  .main-navigation {
+    gap: 4px;
+    padding: 12px;
+  }
+
+  .main-navigation a {
+    padding: 8px 12px;
+  }
+
+  .page-content {
+    padding: 16px;
+  }
+}
+
