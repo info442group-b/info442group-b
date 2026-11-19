@@ -66,10 +66,10 @@ export default function Welcome({ user }) {
   }
 
   return (
-    <main>
-      <h1>Welcome, {user.displayName || user.email}</h1>
+    <main className="login-page">
 
-      <section>
+      <section className="login-card">
+        <h1>Welcome, {user.displayName || user.email}</h1>
         <h2>Your private check-in</h2>
 
         <p>
@@ -77,7 +77,7 @@ export default function Welcome({ user }) {
           information will remain private to your account.
         </p>
 
-        <label>
+        <label className="welcome-checkbox">
           <input
             type="checkbox"
             checked={privacyAccepted}
@@ -91,9 +91,10 @@ export default function Welcome({ user }) {
           to my account.
         </label>
 
-        <div>
+        <div className="welcome-buttons">
           <button
             type="button"
+            className="btn btn-primary"
             disabled={!privacyAccepted || isSaving}
             onClick={handleStartCheckIn}
           >
@@ -102,6 +103,7 @@ export default function Welcome({ user }) {
 
           <button
             type="button"
+            className="btn btn-secondary"
             disabled={isSaving}
             onClick={handleSkip}
           >

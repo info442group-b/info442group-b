@@ -225,3 +225,41 @@ img {
   }
 }
 
+/* Welcome Page */
+.welcome-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 24px 0;
+  text-align: left;
+  line-height: 1.5;
+}
+
+.welcome-checkbox input {
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+
+.welcome-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.welcome-buttons .btn {
+  border: none;
+}
+
+.welcome-buttons .btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (max-width: 480px) {
+  .welcome-buttons {
+    flex-direction: column;
+  }
+}
+
+
