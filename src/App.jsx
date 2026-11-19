@@ -48,7 +48,7 @@ function AppContent() {
         <Route path="/check-in" element={<CheckIn user={user} />} />
 
         <Route element={<Layout />}>
-          <Route path="/home" element={<Home />} />
+          <Route path="/home" element={<Home user={user} />} />
           <Route path="/insights" element={<Insights />} />
           <Route
             path="/settings"

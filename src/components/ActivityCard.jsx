@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../index.css";
 
-const ACTIVITIES = [
+export const ACTIVITIES = [
   {
     id: "breathing",
     title: "Slow breathing",
