@@ -1,11 +1,84 @@
-.activity {} /*outer wrapper*/
-.activity-card {} /*box around activity*/
-.activity-title {} /*activity name*/
-.activity-duration {} /*time*/
-.activity-steps {} /*instructions <ol>*/
-.activity-timer {} /*big countdown and "all done"*/
-.activity-buttons {} /*row holding buttons*/
-.btn {} /*shared button base*/
-.btn-primary {} /*start, pause, resume*/
-.btn-secondary {} /*show another suggestion*/
-.activity-support {} /*"Open supporrt resources" in link style*/
+.activity {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.activity-card {
+  padding: 24px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+}
+
+.activity-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.activity-duration {
+  color: #555;
+  font-size: 14px;
+}
+
+.activity-steps {
+  line-height: 1.8;
+}
+
+.activity-timer {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.activity-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.btn-primary {
+  background-color: #2563eb;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #e5e7eb;
+  color: #222;
+}
+
+.activity-support {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
+/* Mobile adjustments */
+@media (max-width: 600px) {
+  .activity {
+    padding: 16px;
+  }
+
+  .activity-card {
+    padding: 16px;
+  }
+
+  .activity-buttons {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .activity-timer {
+    font-size: 32px;
+  }
+}
+
