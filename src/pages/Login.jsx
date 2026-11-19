@@ -31,12 +31,12 @@ export default function Login() {
       <h1>Welcome to Kindly</h1>
       <p>Sign in to continue to your private check-ins.</p>
 
-      <button type="button" className="btn btn-primary login-button" onClick={handleGoogleSignIn} disabled={isSigningIn}>
+      <button type="button" className="btn btn-primary form-button" onClick={handleGoogleSignIn} disabled={isSigningIn}>
         {isSigningIn ? "Signing in..." : "Continue with Google"}
       </button>
 
       {error && 
-        <p className="login-error" role="alert">
+        <p className="form-error" role="alert">
           {error}
         </p>
       }

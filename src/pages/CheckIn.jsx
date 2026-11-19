@@ -43,11 +43,12 @@ export default function CheckIn({ user }) {
   }
 
   return (
-    <main>
+    <main className="form-page">
+      <section className="form-card checkin-card">
       <h1>Daily Check-in</h1>
 
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="checkin-field">
           <label htmlFor="mood">How are you feeling today?</label>
 
           <select
@@ -68,11 +69,12 @@ export default function CheckIn({ user }) {
           </select>
         </div>
 
-        <div>
+        <div className="checkin-field">
           <label htmlFor="notes">Notes (optional)</label>
 
           <textarea
             id="notes"
+            rows={4}
             value={notes}
             disabled={isSaving}
             onChange={(event) => setNotes(event.target.value)}
@@ -80,20 +82,22 @@ export default function CheckIn({ user }) {
           />
         </div>
 
-        <button type="submit" disabled={isSaving}>
+        <button type="submit" className="btn btn-primary" disabled={isSaving}>
           {isSaving ? "Saving..." : "Save Check-in"}
         </button>
 
         <button
           type="button"
+          className="btn btn-secondary"
           disabled={isSaving}
           onClick={() => navigate("/home")}
         >
           Cancel
         </button>
 
-        {error && <p role="alert">{error}</p>}
+        {error && <p className="form-error" role="alert">{error}</p>}
       </form>
+      </section>
     </main>
   );
 }

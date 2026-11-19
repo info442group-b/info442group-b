@@ -66,9 +66,9 @@ export default function Welcome({ user }) {
   }
 
   return (
-    <main className="login-page">
+    <main className="form-page">
 
-      <section className="login-card">
+      <section className="form-card">
         <h1>Welcome, {user.displayName || user.email}</h1>
         <h2>Your private check-in</h2>
 

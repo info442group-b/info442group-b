@@ -122,18 +122,20 @@ export default function Settings({ user }) {
   }
 
   if (isLoading) {
-    return <p>Loading settings...</p>;
+    <main className="page-content">
+      return <p>Loading settings...</p>;
+    </main>
   }
 
   return (
-    <main>
-      <h1>Settings</h1>
+    <main className="page-content">
+      <h1 className="settings-title">Settings</h1>
 
-      <form onSubmit={handleSave}>
-        <section>
+      <form className="settings-form" onSubmit={handleSave}>
+        <section className="settings-section">
           <h2>Daily reminder</h2>
 
-          <label>
+          <label className="settings-checkbox">
             <input
               type="checkbox"
               checked={reminderEnabled}
@@ -144,7 +146,7 @@ export default function Settings({ user }) {
             Enable daily check-in reminder
           </label>
 
-          <div>
+          <div className="settings-field">
             <label htmlFor="reminder-time">Reminder time</label>
 
             <input
@@ -157,10 +159,10 @@ export default function Settings({ user }) {
           </div>
         </section>
 
-        <section>
+        <section className="settings-section">
           <h2>Accessibility</h2>
 
-          <label>
+          <label className="settings-checkbox">
             <input
               type="checkbox"
               checked={highContrast}
@@ -169,7 +171,7 @@ export default function Settings({ user }) {
             Use high contrast
           </label>
 
-          <label>
+          <label className="settings-checkbox">
             <input
               type="checkbox"
               checked={reducedMotion}
@@ -178,7 +180,7 @@ export default function Settings({ user }) {
             Reduce motion
           </label>
 
-          <div>
+          <div className="settings-field">
             <label htmlFor="text-size">Text size</label>
 
             <select
@@ -193,11 +195,11 @@ export default function Settings({ user }) {
           </div>
         </section>
 
-        <button type="submit" disabled={isSaving}>
+        <button className="btn btn-primary settings-save-button" type="submit" disabled={isSaving}>
           {isSaving ? "Saving..." : "Save Settings"}
         </button>
 
-        {message && <p role="status">{message}</p>}
+        {message && <p className="settings-message" role="status">{message}</p>}
       </form>
     </main>
   );
