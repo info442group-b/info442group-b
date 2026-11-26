@@ -262,197 +262,211 @@ img {
   }
 }
 
-
-/* Check-in Page */
-.checkin-card {
-  max-width: 500px;
-}
-
-.checkin-form {
+/* Settings: Reminders */
+/* ---------- Settings: reminders ---------- */
+.reminders-settings .button-row {
   display: flex;
-  flex-direction: column;
-  gap: 24px;
-  margin-top: 24px;
-  text-align: left;
-}
-
-.checkin-field {
-  display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   gap: 8px;
+  margin: 8px 0;
 }
 
-.checkin-field label {
-  font-size: 16px;
-  font-weight: 600;
-  color: #333333;
+.reminders-settings .hint {
+  font-size: 14px;
+  color: #555555;
 }
 
-.checkin-field select,
-.checkin-field textarea {
-  width: 100%;
-  padding: 12px;
-  font-family: inherit;
-  font-size: 16px;
-  border: 1px solid #d1d5db;
+.notification-status {
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  background-color: #f8fafc;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
-  background-color: #ffffff;
 }
 
-.checkin-field textarea {
-  resize: vertical;
-  min-height: 120px;
+.reminder-settings-list {
+  list-style: none;
+  padding: 0;
+  margin: 16px 0;
 }
 
-.checkin-buttons {
+.reminder-row {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid #e5e7eb;
 }
 
-.checkin-buttons .btn {
-  flex: 1;
-  border: none;
+.reminder-row p {
+  margin: 2px 0;
 }
 
-.checkin-buttons .btn:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
+.reminder-wording {
+  color: #404040;
 }
 
-@media (max-width: 480px) {
-  .checkin-buttons {
-    flex-direction: column;
-  }
+.reminder-form {
+  display: grid;
+  gap: 12px;
+  padding: 16px 0;
+  max-width: 420px;
 }
 
-/* Home Page */
-.home-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #222222;
-  margin-top: 0;
-  margin-bottom: 24px;
+.reminder-form h3 {
+  margin: 0;
+}
+
+.reminder-form label {
+  display: grid;
+  gap: 4px;
+  font-weight: 600;
+}
+
+.reminder-form select,
+.reminder-form input {
+  min-height: 44px;
+  padding: 8px 10px;
+  font: inherit;
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
+}
+
+/* Reminder Notification */
+
+.due-reminders {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(92vw, 28rem);
+  display: grid;
+  gap: 8px;
+  z-index: 1000;
+}
+
+.due-reminder {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 12px 16px;
+  background-color: #ffffff;
+  border: 1px solid #2563eb;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.due-reminder p {
+  margin: 0;
 }
 
 @media (max-width: 600px) {
-  .home-title {
-    font-size: 24px;
+  .dashboard-card {
+    padding: 16px;
   }
 }
 
-
-/* Settings Page */
-.settings-title {
-  font-size: 28px;
-  font-weight: 700;
-  color: #222222;
-  margin-top: 0;
-  margin-bottom: 24px;
-}
-
+/* Settings: Accessibility */
 .settings-form {
-  width: 100%;
-  max-width: 800px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  max-width: 420px;
+  margin-top: 24px;
 }
 
-.settings-section {
-  padding: 24px;
+.accessibility-settings {
+  display: grid;
+  gap: 12px;
+  padding: 20px;
   background-color: #ffffff;
   border: 1px solid #d1d5db;
   border-radius: 12px;
 }
 
-.settings-section h2 {
-  font-size: 22px;
-  color: #333333;
-  margin-top: 0;
-  margin-bottom: 20px;
+.accessibility-settings h2 {
+  margin: 0 0 4px;
+  font-size: 20px;
 }
 
 .settings-checkbox {
   display: flex;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-  line-height: 1.5;
+  gap: 10px;
+  min-height: 44px;
   cursor: pointer;
 }
 
 .settings-checkbox input {
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
-  accent-color: #2563eb;
+  cursor: pointer;
 }
 
 .settings-field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  display: grid;
+  gap: 4px;
 }
 
 .settings-field label {
-  font-size: 16px;
   font-weight: 600;
-  color: #333333;
 }
 
-.settings-field input,
 .settings-field select {
-  width: 100%;
-  max-width: 300px;
-  padding: 12px;
-  font-family: inherit;
-  font-size: 16px;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
+  min-height: 44px;
+  padding: 8px 10px;
+  font: inherit;
   background-color: #ffffff;
+  border: 1px solid #9ca3af;
+  border-radius: 8px;
 }
 
-.settings-field input:disabled {
-  background-color: #f1f5f9;
-  cursor: not-allowed;
-}
-
-.settings-save-button {
-  align-self: flex-start;
+.settings-save {
+  margin-top: 16px;
   border: none;
 }
 
-.settings-save-button:disabled {
+.settings-save:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
 
 .settings-message {
-  margin-top: 0;
-  padding: 12px;
+  margin-top: 12px;
+  padding: 12px 16px;
+  background-color: #f8fafc;
+  border: 1px solid #e5e7eb;
   border-radius: 8px;
-  background-color: #f1f5f9;
-  color: #333333;
 }
 
-/* Mobile adjustments */
 @media (max-width: 600px) {
-  .settings-title {
-    font-size: 24px;
-  }
-
-  .settings-section {
-    padding: 16px;
-  }
-
-  .settings-section h2 {
-    font-size: 20px;
-  }
-
-  .settings-field input,
-  .settings-field select {
+  .settings-form {
     max-width: 100%;
   }
 
-  .settings-save-button {
+  .accessibility-settings {
+    padding: 16px;
+  }
+
+  .settings-save {
     width: 100%;
   }
+}
+.support-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.support-container .card {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin: 0.75rem 0;
+  border-radius: 8px;
+}
+
+.support-container button {
+  margin-right: 0.4rem;
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
 }

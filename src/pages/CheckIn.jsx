@@ -8,12 +8,38 @@ import {
 
 import { db } from "../firebase.js";
 
+const FACTORS = [
+  "Sleep",
+  "Work or school",
+  "Relationships",
+  "Food",
+  "Exercise",
+  "Health",
+  "Money",
+];
+
+//Ensure entered data is same format, easier for data insights
+function formatFactor(text) {
+  const cleaned = text.trim().replace(/\s+/g, " ").toLowerCase();
+  return cleaned.charAt(0).toUpperCase() + cleaned.slice(1);
+}
+
 export default function CheckIn({ user }) {
   const [mood, setMood] = useState("");
+  const [factors, setFactors] = useState([]);
+  const [otherChecked, setOtherChecked] = useState(false);
+  const [otherText, setOtherText] = useState("");
   const [notes, setNotes] = useState("");
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState("");
   const navigate = useNavigate();
+
+  function toggleFactor(factor, checked) {
+    setFactors((current) =>
+      checked ? [...current, factor] : current.filter((item) => item !== factor)
+    );
+    setError("");
+  }
 
   async function handleSubmit(event) {
     event.preventDefault();
@@ -23,12 +49,34 @@ export default function CheckIn({ user }) {
       return;
     }
 
+    const customFactor = otherChecked ? formatFactor(otherText) : "";
+
+    if (otherChecked && !customFactor) {
+      setError("Please write your own factor, or uncheck Other.");
+      return;
+    }
+
+    const influences = [...factors];
+
+    if (
+      customFactor &&
+      !influences.some((item) => item.toLowerCase() === customFactor.toLowerCase())
+    ) {
+      influences.push(customFactor);
+    }
+
+    if (influences.length === 0) {
+      setError("Please select at least one factor that influenced your mood.");
+      return;
+    }
+
     setError("");
     setIsSaving(true);
 
     try {
       await addDoc(collection(db, "users", user.uid, "checkIns"), {
         mood,
+        influences,
         notes: notes.trim(),
         createdAt: serverTimestamp(),
       });
@@ -68,6 +116,49 @@ export default function CheckIn({ user }) {
             <option value="struggling">Struggling</option>
           </select>
         </div>
+
+        <fieldset disabled={isSaving}>
+          <legend>What factors influenced your mood today? (required)</legend>
+
+          {FACTORS.map((factor) => (
+            <label key={factor}>
+              <input
+                type="checkbox"
+                checked={factors.includes(factor)}
+                onChange={(event) => toggleFactor(factor, event.target.checked)}
+              />
+              {factor}
+            </label>
+          ))}
+
+          <label>
+            <input
+              type="checkbox"
+              checked={otherChecked}
+              onChange={(event) => {
+                setOtherChecked(event.target.checked);
+                setError("");
+              }}
+            />
+            Other
+          </label>
+
+          {otherChecked && (
+            <div>
+              <label htmlFor="other-factor">Write your own</label>
+              <input
+                id="other-factor"
+                type="text"
+                value={otherText}
+                maxLength={40}
+                onChange={(event) => {
+                  setOtherText(event.target.value);
+                  setError("");
+                }}
+              />
+            </div>
+          )}
+        </fieldset>
 
         <div className="checkin-field">
           <label htmlFor="notes">Notes (optional)</label>

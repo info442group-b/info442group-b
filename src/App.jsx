@@ -11,6 +11,7 @@ import Home from "./pages/Home.jsx";
 import Insights from "./pages/Insights.jsx";
 import Settings from "./pages/Settings.jsx";
 import Support from "./pages/Support.jsx";
+import CheckReminders from "./components/CheckReminders.jsx";
 
 function AppContent() {
   const [user, setUser] = useState(null);
@@ -43,13 +44,15 @@ function AppContent() {
         </button>
       </header>
 
+      <CheckReminders user={user} />
+
       <Routes>
         <Route path="/" element={<Welcome user={user} />} />
         <Route path="/check-in" element={<CheckIn user={user} />} />
 
         <Route element={<Layout />}>
-          <Route path="/home" element={<Home />} />
-          <Route path="/insights" element={<Insights />} />
+          <Route path="/home" element={<Home user={user} />} />
+          <Route path="/insights" element={<Insights user={user} />} />
           <Route
             path="/settings"
             element={<Settings user={user} />}

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Support — Kindly</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: 2rem auto; padding: 0 1rem; }
+    .card { border: 1px solid #ccc; padding: 1rem; margin: 0.75rem 0; border-radius: 8px; }
+    button { margin-right: 0.4rem; padding: 0.4rem 0.7rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+  <h1>Someone is with you, ask for support!</h1>
+  <p>You don't have to carry everything alone. Free and private support is right here.</p>
+
+  <input id="searchBox" type="text" placeholder="What do you need right now? (e.g., text, 988, UW)..." />
+
+  <div style="margin-top: 0.5rem;">
+    <button onclick="setFilter('all')">Everything</button>
+    <button onclick="setFilter('24/7')">Text Now</button>
+    <button onclick="setFilter('campus')">On Campus</button>
+  </div>
+
+  <div id="results"></div>
+
+  <script>
+    const resources = [
+      {name: "988 Lifeline",
+        type: "24/7",
+        info: "Call or text anytime, free and private.",
+        link: "tel:988",
+        cta: "Call or text 988"},
+      {name: "Crisis Text Line",
+        type: "24/7",
+        info: "Don't feel like talking? Text with someone who is ready to listen.",
+        link: "sms:741741?body=HOME",
+        cta: "Text HOME to 741741"},
+      {name: "UW Husky HelpLine",
+        type: "campus",
+        info: "School stress or just a rough week? Here is a free and private support for UW students.",
+        link: "tel:2065431240",
+        cta: "Call 206-543-1240"}
+    ];
+
+    let currentFilter = "all";
+
+    function setFilter(newFilter) {currentFilter = newFilter;
+      showResources();}
+
+    function showResources() {const text = document.getElementById("searchBox").value.toLowerCase();
+      const box = document.getElementById("results");
+      box.innerHTML = "";
+
+      for (const item of resources) {const matchesType = currentFilter === "all" || item.type === currentFilter;
+        const matchesSearch =
+          item.name.toLowerCase().includes(text) ||
+          item.info.toLowerCase().includes(text);
+
+        if (matchesType && matchesSearch) {box.innerHTML += `
+            <div class="card">
+              <h3>${item.name}</h3>
+              <p>${item.info}</p>
+              <a href="${item.link}">${item.cta} →</a>
+            </div>
+          `;
+        }
+      }
+
+      if (box.innerHTML === "") {box.innerHTML = "<p>Nothing came up for that, try another word or tap Everything.</p>";
+      }}
+
+    document.getElementById("searchBox").addEventListener("input", showResources);
+    showResources();
+  </script>
+
+</body>
+</html>
