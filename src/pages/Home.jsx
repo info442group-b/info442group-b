@@ -30,13 +30,9 @@ function isToday(date) {
   const today = new Date();
 
   return (
-    <main className="page-content">
-      <h1 className="home-title">Home</h1>
-      <ActivityCard />
-      date.getFullYear() === today.getFullYear() &&
-      date.getMonth() === today.getMonth() &&
-      date.getDate() === today.getDate()
-    </main>
+    date.getFullYear() === today.getFullYear() &&
+    date.getMonth() === today.getMonth() &&
+    date.getDate() === today.getDate()
   );
 }
 
@@ -247,6 +243,7 @@ export default function Home({ user }) {
               <button
                 type="button"
                 key={activity.id}
+                aria-pressed={selectedActivityId === activity.id}
                 className={
                   selectedActivityId === activity.id
                     ? "activity-option selected"
