@@ -1,16 +1,10 @@
 import { useEffect, useState } from "react";
-import {
-  doc,
-  getDoc,
-  serverTimestamp,
-  setDoc,
-} from "firebase/firestore";
+import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
 
 import { db } from "../firebase.js";
+import Reminders from "../components/Reminders.jsx";
 
 export default function Settings({ user }) {
-  const [reminderEnabled, setReminderEnabled] = useState(false);
-  const [reminderTime, setReminderTime] = useState("09:00");
   const [highContrast, setHighContrast] = useState(false);
   const [reducedMotion, setReducedMotion] = useState(false);
   const [textSize, setTextSize] = useState("medium");
@@ -29,18 +23,7 @@ export default function Settings({ user }) {
           "accessibility"
         );
 
-        const reminderReference = doc(
-          db,
-          "users",
-          user.uid,
-          "reminders",
-          "daily"
-        );
-
-        const [accessibilitySnapshot, reminderSnapshot] = await Promise.all([
-          getDoc(accessibilityReference),
-          getDoc(reminderReference),
-        ]);
+        const accessibilitySnapshot = await getDoc(accessibilityReference);
 
         if (accessibilitySnapshot.exists()) {
           const accessibilityData = accessibilitySnapshot.data();
@@ -48,13 +31,6 @@ export default function Settings({ user }) {
           setHighContrast(accessibilityData.highContrast ?? false);
           setReducedMotion(accessibilityData.reducedMotion ?? false);
           setTextSize(accessibilityData.textSize ?? "medium");
-        }
-
-        if (reminderSnapshot.exists()) {
-          const reminderData = reminderSnapshot.data();
-
-          setReminderEnabled(reminderData.enabled ?? false);
-          setReminderTime(reminderData.time ?? "09:00");
         }
       } catch (err) {
         console.error(err);
@@ -81,36 +57,16 @@ export default function Settings({ user }) {
         "accessibility"
       );
 
-      const reminderReference = doc(
-        db,
-        "users",
-        user.uid,
-        "reminders",
-        "daily"
+      await setDoc(
+        accessibilityReference,
+        {
+          highContrast,
+          reducedMotion,
+          textSize,
+          updatedAt: serverTimestamp(),
+        },
+        { merge: true }
       );
-
-      await Promise.all([
-        setDoc(
-          accessibilityReference,
-          {
-            highContrast,
-            reducedMotion,
-            textSize,
-            updatedAt: serverTimestamp(),
-          },
-          { merge: true }
-        ),
-
-        setDoc(
-          reminderReference,
-          {
-            enabled: reminderEnabled,
-            time: reminderTime,
-            updatedAt: serverTimestamp(),
-          },
-          { merge: true }
-        ),
-      ]);
 
       setMessage("Settings saved successfully.");
     } catch (err) {
@@ -129,34 +85,9 @@ export default function Settings({ user }) {
     <main>
       <h1>Settings</h1>
 
+      <Reminders user={user} />
+
       <form onSubmit={handleSave}>
-        <section>
-          <h2>Daily reminder</h2>
-
-          <label>
-            <input
-              type="checkbox"
-              checked={reminderEnabled}
-              onChange={(event) =>
-                setReminderEnabled(event.target.checked)
-              }
-            />
-            Enable daily check-in reminder
-          </label>
-
-          <div>
-            <label htmlFor="reminder-time">Reminder time</label>
-
-            <input
-              id="reminder-time"
-              type="time"
-              value={reminderTime}
-              disabled={!reminderEnabled}
-              onChange={(event) => setReminderTime(event.target.value)}
-            />
-          </div>
-        </section>
-
         <section>
           <h2>Accessibility</h2>
 

@@ -11,6 +11,7 @@ import Home from "./pages/Home.jsx";
 import Insights from "./pages/Insights.jsx";
 import Settings from "./pages/Settings.jsx";
 import Support from "./pages/Support.jsx";
+import CheckReminders from "./components/CheckReminders.jsx";
 
 function AppContent() {
   const [user, setUser] = useState(null);
@@ -42,6 +43,8 @@ function AppContent() {
           Sign out
         </button>
       </header>
+
+      <CheckReminders user={user} />
 
       <Routes>
         <Route path="/" element={<Welcome user={user} />} />

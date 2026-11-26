@@ -114,6 +114,8 @@ export default function Home({ user }) {
             ...reminderDocument.data(),
           };
 
+          if (!reminder.type) return;
+
           const reminderText = getReminderText(reminder);
           const duplicateKey = reminderText.trim().toLowerCase();
 
