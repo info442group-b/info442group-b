@@ -87,29 +87,29 @@ export default function Settings({ user }) {
 
       <Reminders user={user} />
 
-      <form onSubmit={handleSave}>
-        <section>
+      <form onSubmit={handleSave} className="settings-form">
+        <section className="accessibility-settings">
           <h2>Accessibility</h2>
 
-          <label>
+          <label className="settings-checkbox">
             <input
               type="checkbox"
               checked={highContrast}
               onChange={(event) => setHighContrast(event.target.checked)}
             />
-            Use high contrast
+            <span>Use high contrast</span>
           </label>
 
-          <label>
+          <label className="settings-checkbox">
             <input
               type="checkbox"
               checked={reducedMotion}
               onChange={(event) => setReducedMotion(event.target.checked)}
             />
-            Reduce motion
+            <span>Reduce motion</span>
           </label>
 
-          <div>
+          <div className="settings-field">
             <label htmlFor="text-size">Text size</label>
 
             <select
@@ -124,11 +124,19 @@ export default function Settings({ user }) {
           </div>
         </section>
 
-        <button type="submit" disabled={isSaving}>
+        <button
+          type="submit"
+          className="btn btn-primary settings-save"
+          disabled={isSaving}
+        >
           {isSaving ? "Saving..." : "Save Settings"}
         </button>
 
-        {message && <p role="status">{message}</p>}
+        {message && (
+          <p role="status" className="settings-message">
+            {message}
+          </p>
+        )}
       </form>
     </main>
   );
